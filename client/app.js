@@ -15,7 +15,7 @@ angular.module('Instagram', ['ngRoute', 'ngMessages'])
           controller : 'SignupCtrl'
         })
         .when('photo/:id', {
-          templateUrl : 'views/details.html',
+          templateUrl : 'views/detail.html',
           controller : 'DetailCtrl'
         })
         .otherwise('/');
