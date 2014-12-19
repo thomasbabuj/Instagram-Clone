@@ -17,7 +17,7 @@ a:hover {
 .navbar {
   min-height: 50px;
   border: 0;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0,.26);
+  box-shadow: 0 2px 5px 0 rgba(226, 33, 33, 1);
 }
 
 .navbar-header {
