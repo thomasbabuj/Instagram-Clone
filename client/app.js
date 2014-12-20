@@ -20,13 +20,13 @@ angular.module('Instagram', ['ngRoute', 'ngMessages', 'satellizer'])
         })
         .otherwise('/');
 
-        $authProvider.loginUrl = 'http://localhost:3000/auth/instagram',
-        $authProvider.signupUrl = 'http://localhost:3000/auth/signup';
+        $authProvider.loginUrl = 'http://localhost:8000/server/auth/instagram',
+        $authProvider.signupUrl = 'http://localhost:8000/server/auth/signup';
         $authProvider.oauth2 ({
           name : 'instagram',
-          url : 'http://localhost:3000/auth/instagram',
-          redirectUri : 'http://localhost/3000',
-          clientId : '',
+          url : 'http://localhost:8000/server/auth/instagram',
+          redirectUri : 'http://localhost:8000',
+          clientId : '2fcebd8d60e24a3098777f36d325c654',
           requiredUrlParams : ['scope'],
           scope : ['likes'],
           scopeDelimiter: '+',
