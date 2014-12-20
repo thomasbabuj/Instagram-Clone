@@ -10,7 +10,7 @@ angular.module('Instagram')
 					$rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
 				})
 				.catch(function(response){
-					console.log (resonse.data);
+					console.log (response.error);
 				});
 		};
 
