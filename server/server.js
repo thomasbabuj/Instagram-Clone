@@ -108,4 +108,34 @@ app.post('/auth/login', function(req, res){
 			res.send({ token : token, user : user });
 		});
 	});
-})
+});
+
+/*
+|------------------------------------------------------------------
+| Create account using email and password
+|------------------------------------------------------------------
+*/
+
+app.post('/auth/signup', function(req, res){
+	User.findOne({ email : req.body.email }, function(err, existingUser) {
+		if( existingUser ) {
+			return res.status(409).send({ message : 'Email is already taken.'});
+		}
+
+		var user = new User ({
+			email : req.body.email,
+			password : req.body.password 		
+		});
+
+		bcrypt.genSalt(10, function(err, salt){
+			bcrypt.hash(user.password, salt, function(err, hash){
+				user.password = hash;
+
+				user.save (function(){
+					var token = createToken(user);
+					res.send( { token : token, user: user});
+				});
+			});
+		});
+	});
+});
