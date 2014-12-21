@@ -9,6 +9,8 @@ var mongoose = require('mongoose');
 var path = require('path');
 var request = require('request');
 
+var config = require('./config');
+
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
