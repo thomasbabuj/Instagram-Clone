@@ -219,6 +219,13 @@ app.post('/auth/instagram', function(req, res){
 	})
 });
 
+/*
+|------------------------------------------------------------------
+| Retrive user feed 
+|------------------------------------------------------------------
+*/
+
+
 app.get('/api/feed', isAuthenticated, function(req, res){
 	var feedUrl = 'https://api.instagram.com/v1/users/self/feed';
 	var params = { access_token : req.user.accessToken };
@@ -227,6 +234,22 @@ app.get('/api/feed', isAuthenticated, function(req, res){
 		if (!error && response.status == 200 )
 		{
 			res.send(body.data);
+		}
+	});
+});
+
+/*
+|------------------------------------------------------------------
+| Retrive information about the media object with an given media ID 
+|------------------------------------------------------------------
+*/
+app.get('api/media/:id', isAuthenticated, function(req, res) {
+	var mediaUrl = 'https://api.instagram.com/v1/media/' + req.params.id;
+	var params = { access_token : req.user.accessToken };
+
+	request.get({ url : mediaUrl , qs : params , json : true}, function(error, response, body) {
+		if ( !error && response.statusCode == 200 ) {
+			res.send( body.data );
 		}
 	});
 });
