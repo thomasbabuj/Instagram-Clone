@@ -82,3 +82,30 @@ function isAuthenticated(req, res, next) {
 		next();
 	});
 }
+
+/*
+|------------------------------------------------------------------
+| Sign in with Email Middleware
+|------------------------------------------------------------------
+*/
+
+app.post('/auth/login', function(req, res){
+	User.findOne({ email : req.body.email }, '+password', function(err, user){
+		if( !user )
+		{
+			return res.status(401).send({ message: {email : 'Incorrect email'} });
+		}
+
+		bcrypt.compare(req.body.password, user.password, function(err,isMatch) {
+			if (!isMatch) {
+				return res.status(401).send({ message :  { password : 'Incorrect password'} });
+			}
+
+			user = user.toObject();
+			delete user.password;
+
+			var token = creatToken(user);
+			res.send({ token : token, user : user });
+		});
+	});
+})
