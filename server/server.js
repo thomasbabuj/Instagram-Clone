@@ -243,7 +243,7 @@ app.get('/api/feed', isAuthenticated, function(req, res){
 | Retrive information about the media object with an given media ID 
 |------------------------------------------------------------------
 */
-app.get('api/media/:id', isAuthenticated, function(req, res) {
+app.get('/api/media/:id', isAuthenticated, function(req, res) {
 	var mediaUrl = 'https://api.instagram.com/v1/media/' + req.params.id;
 	var params = { access_token : req.user.accessToken };
 
@@ -251,6 +251,29 @@ app.get('api/media/:id', isAuthenticated, function(req, res) {
 		if ( !error && response.statusCode == 200 ) {
 			res.send( body.data );
 		}
+	});
+});
+
+
+/*
+|------------------------------------------------------------------
+| Setting like on a media by the currently authenticated user
+|------------------------------------------------------------------
+*/
+app.get('/api/like', isAuthenticated, function(req, res, next) {
+	var mediaId = req.body.mediaId;
+	var accessToken = { access_token : req.user.accessToken };
+	var likeUrl = 'https://api.instagram.com/v1/media/'+ mediaId + '/likes';
+
+	request.post({ url : likeUrl, form: accessToken, json: true}, function(error, response, body) {
+		if ( response.statusCode !== 200 )
+		{
+			return res.status(response.statusCode).send({
+				code : response.statusCode,
+				message : body.meta.error_message
+			});
+		}
+		res.status(200).end();
 	});
 });
 
