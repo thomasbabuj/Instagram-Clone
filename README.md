@@ -34,6 +34,16 @@ Development Steps
 
 3)  Bootstraping UI
 
+4)  Routing
+
+    A template is just a snippet of HTML-like code that gets inserted into the ng-view block
+
+    need to use ng-include if you want to display only on some pages.
+
+    Each .when() method above takes  a relative URL path as its first argument and an object as its second argument.
+
+    .otherwise() will match any path that is not one of the specified routes above. This is where you could also redirect to a 404 page instead of a home page like we have above.
+
 
 
 
