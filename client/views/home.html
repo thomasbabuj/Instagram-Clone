@@ -1,0 +1,32 @@
+<!-- Home Page template  -->
+<div class="container">
+
+  <div ng-if="isAuthenticated() && currentUser.username">
+    <div class="row">
+      <div ng-repeat="photo in photos" class="col-lg-2 col-sm-3 col-xs-4">
+        <a href="#/photo/{{photo.id}}"></a>
+          <img ng-src="{{photo.images.standard_resolution.url" class="thumbnail img-responsive" />
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="!isAuthenticated()">
+    <div class="jumbtron">
+      <h2><i class="ion-images"></i> Instagram</h2>
+      <p>This is a basic Instagram clone powered by <strong>Satellizer</strong>. To continue,
+      please log in with your Instagram account or create a new email account.
+      </p>
+      <p>
+        <a class="btn btn-lg btn-success" href="#/login"><i class="ion-log-in"></i> Login</a>
+        <a class="btn btn-lg btn-primary" href="#/signup"><i class="ion-person-add"></i> Create Account</a>
+      </p>
+    </div>
+  </div>
+
+  <div ng-if="isAuthenticated() && !currentUser.username" class="center-form panel">
+    <div class="panel-body">
+      <h5 clas="text-center"><i class="ion"
+    </div>
+  </div>
+
+</div>
