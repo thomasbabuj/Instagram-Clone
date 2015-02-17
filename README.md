@@ -32,7 +32,9 @@ Development Steps
 
      The module name and the ng-app attribute value in index.html have to match.
 
-3)
+3)  Bootstraping UI
+
+
 
 
 

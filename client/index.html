@@ -10,6 +10,21 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+  <div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <a href="/" class="navbar-brand">
+          <i class="ion-images"></i>Instagraam
+        </a>
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/login">Login</a></li>
+        <li><a href="#/signup">Sign up</a></li>
+        <li><a href="" ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+
   <div ng-view></div>
 
   <script src="vendor/angular.js"></script>
