@@ -5,7 +5,7 @@ angular.module('Instagram')
 
     $scope.isAuthenticated = function() {
       // Check if user logged in
-      reutrn $auth.isAuthenticated();
+      return $auth.isAuthenticated();
     };
 
     $scope.linkInstagram = function() {
