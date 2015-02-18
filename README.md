@@ -44,6 +44,28 @@ Development Steps
 
     .otherwise() will match any path that is not one of the specified routes above. This is where you could also redirect to a 404 page instead of a home page like we have above.
 
+5)  HomePage Template and Ctrl
+
+    This template consists of 3 main parts:
+
+        User is authenticated via Email or OAuth 2.0 and has a valid Instagram username.
+
+        User is not authenticated.
+
+        User is authenticated via Email but does not have a valid Instagram username
+
+    ng-if attribute is a special Angular directive that conditionally renders an HTML block based on some expression. If the expression inside ng-if evaluates to false then the element is removed from the DOM, otherwise a clone of the element is reinserted into the DOM.
+
+    The ng-repeat attribute is another special Angular directive that is essentially a for-each loop designed for Angular templates.
+
+    in Angular the ng-repeat will iterate over the element itself on which it is defined.
+
+    we need to use ng-src attribute on <img> element.
+
+    Don’t forget to prepend href paths with a hash, i.e. #/login instead of /login. That is necessary unless you are using HTML5 History API (pushState).
+
+
+
 
 
 
