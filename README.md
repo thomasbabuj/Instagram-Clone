@@ -82,6 +82,10 @@ Development Steps
 
     Injecting services in the Homectrl ( $socpe, $window and $rootScope are builtin AngularJS services.)
 
+7)  Login Page
+
+
+
 
 
 
