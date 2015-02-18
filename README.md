@@ -80,7 +80,7 @@ Development Steps
 
     the authorizationEndpoint is the URL for the consent screen.
 
-
+    Injecting services in the Homectrl ( $socpe, $window and $rootScope are builtin AngularJS services.)
 
 
 
