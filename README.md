@@ -64,6 +64,22 @@ Development Steps
 
     Don’t forget to prepend href paths with a hash, i.e. #/login instead of /login. That is necessary unless you are using HTML5 History API (pushState).
 
+6)  Adding Satellizer Module
+
+    By default, Satellizer module comes with the following default OAuth providers at the moment of this writing: Google, Facebook, Twitter, LinkedIn, GitHub, Yahoo and Windows Live
+
+    Both loginUrl and signupUrl are server endpoints to handle user login and registration
+
+    Satellizer will send a POST request to these endpoints when we call $auth.login() and $auth.signup() from LoginCtrl and SignupCtrl controllers.
+
+    The url server endpoint is where most of the work will be done. It will handle Instagram account creation, account merging, returning existing account if a user logs in a second time
+
+    The redirectUri where Instagram will redirect to after user successfully authorizes our app to use their profile information, feed and potentially perform actions like commenting on and liking photos on their behalf.
+
+    The scope and scopeDelimiter are used for requesting additional permissions. while scopeDelimter is a separator between multiple scopes.
+
+    the authorizationEndpoint is the URL for the consent screen.
+
 
 
 
