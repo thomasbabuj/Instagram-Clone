@@ -84,6 +84,38 @@ Development Steps
 
 7)  Login Page
 
+    ng-submit is very similiar to $('form').submit in jquery
+
+    For displaying error messages under the form fields we are going to use ng-messages directive introduced in AngularJS 1.3.
+
+    In ng-message server-error attribute is a directive while ng-message="server" is a custom validtor for ng-messages.
+
+    instagramLogin() and emailLogin() returns a promise, that's why we use .then and .catch to handle
+    success and error responses.
+
+    Under the hood $auth.authenticate() opens a popup window pointing to authorizationEndpoint with dynamically constructed query parameters based on the default configuration object.
+
+    Satellizer uses explicit grant type, so we need to have a back-end for authentication as well.
+
+    The major diffference between two grant types ( implicit and explicit) that actually matters to us 
+    is that one grant type can be done purely on the client and another grant cannot.
+
+    With explicit grant type, when the user authorize the app, instagram will issue you a short lived authorization code, that you may exchange for an access_token on the server. This cant be done just on the client-side alone. You can then use that access_token to query for user's profile info or perform certain actions on behalf of that user.
+
+    With implicit grant type,  Instagram will issue an access_token right away, instead of an authorization code. That means you can do user authentication entirely on the client-side similar to Facebook and Google's JS SDK.
+
+    The downside of using implicit approach is that when you obtain user's profile and decide to save that user in your database how can you be sure that the profile info and access token they are sending to you is valid ? for this we need to verify it first.
+
+    once the $auth.authenticate() returns, it will have a response object from the server which contains JSON Web Token (JWT) and a user object.
+
+    This unique JWT token is generated on the server specifically for this user
+
+    Its better to send userobject alongside JWT token, not inside it and then stores it in the local storage.
+
+    Satellizer will pass along the original response object from the server In other words, if you send a JSON object with token and user from the server, we could get user back via response.data.user inside .then() of authenticate() and login() methods.
+
+
+
 
 
 
