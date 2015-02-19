@@ -114,6 +114,23 @@ Development Steps
 
     Satellizer will pass along the original response object from the server In other words, if you send a JSON object with token and user from the server, we could get user back via response.data.user inside .then() of authenticate() and login() methods.
 
+8) Singup Form
+
+    Satellizer’s $auth.signup() method just takes an object and sends it to the server without doing anything to it. 
+
+    If you wish to use /register endpoint instead of /auth/signup you can easily override the signup URL:
+    $authProvider.signupUrl = ‘/register';
+
+    by default Satellizer will automatically sign you in after a successful registration.
+
+    If you do not like this behavior you can turn it off like so:
+    $authProvider.loginOnSignup = false;
+
+    if you disable automatic sign in, Satellizer will simply redirect a user to the /login route specified in $authProvider.loginRoute. If for some reason you have to do something else before redirect to login page you can disable this behavior by setting$authProvider.loginRoute to null.
+
+    
+
+
 
 
 
