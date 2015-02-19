@@ -128,9 +128,13 @@ Development Steps
 
     if you disable automatic sign in, Satellizer will simply redirect a user to the /login route specified in $authProvider.loginRoute. If for some reason you have to do something else before redirect to login page you can disable this behavior by setting$authProvider.loginRoute to null.
 
-    
+9) Authentication Middleware and JWT
 
+    has two methods that are of interest to us: encode() and decode(). 
 
+    An object that gets encoded and decoded is called JWT Claims, others may also refer to it as payload. 
+
+    you could even include the entire user object as part of JWT Claims, 
 
 
 
