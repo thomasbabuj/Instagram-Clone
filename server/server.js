@@ -26,11 +26,24 @@ mongoose.connect(config.db);
 
 var app = express();
 
+var corsOptions = {
+  origin: 'http://localhost:8000'
+};
+
 app.set('port', process.env.PORT || 3000);
-app.use(cors());
+//app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next){
+	console.log('I am adding the allow origin');
+	res.header("Access-Control-Allow-Origin", "http://localhost:8000");
+	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  	res.header("Access-Control-Allow-Credentials", "true");
+	next();
+});
 
 
 function createToken(user) {
