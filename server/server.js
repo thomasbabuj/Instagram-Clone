@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
-	console.log('I am adding the allow origin');
+	//console.log('I am adding the allow origin');
 	res.header("Access-Control-Allow-Origin", "http://localhost:8000");
 	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
@@ -149,7 +149,7 @@ app.post('/auth/instagram', function(req, res) {
     if (req.headers.authorization) {
 
       User.findOne({ instagramId: body.user.id }, function(err, existingUser) {
-
+      	
         var token = req.headers.authorization.split(' ')[1];
         var payload = jwt.decode(token, config.tokenSecret);
 
