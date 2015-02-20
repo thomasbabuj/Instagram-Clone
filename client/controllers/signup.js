@@ -8,11 +8,11 @@ angular.module('Instagram')
 				email : $scope.email,
 				password : $scope.password
 			};
-
+						
 			// Satellizer
 			$auth.signup(user)
 				.catch(function(response){
 					console.log ( response.data );
 				});
-		}
+		};
 	});
