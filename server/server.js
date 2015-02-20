@@ -209,6 +209,17 @@ app.get('/api/feed', isAuthenticated, function(req, res){
 	});
 });
 
+app.get('/api/media/:id', isAuthenticated, function(req,res,next) {
+	var mediaUrl = 'https://api.instagram.com/v1/media/' + req.params.id;
+	var params = { access_token : req.user.accessToken };
+
+	request.get({ url : mediaUrl, qs : params, json : true }, function(error, response, body) {
+		if( !error && response.statusCode === 200){
+			res.send(body.data);
+		}
+	});
+});
+
 app.listen(app.get('port'), function(){
 	console.log('Express server listening on port' + app.get('port'));
 });
