@@ -136,7 +136,9 @@ Development Steps
 
     you could even include the entire user object as part of JWT Claims, 
 
+    The reserved sub claim on line 5 is used to store user’s unique ID
 
+    
 
 
 
